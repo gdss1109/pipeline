@@ -6,7 +6,7 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t maverick0803/hellowhale:latest .'
+        sh 'docker build -t gagan1109/hellowhale:latest .'
       }
     }
     stage('Docker Push') {
@@ -14,15 +14,16 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'docker push maverick0803/hellowhale:latest'
+          sh 'docker push gagan1109/hellowhale:latest'
 	}
       }
     }
     stage('Deploy New Build To Kubernetes') {
 	    agent any
 	    steps{
-		    sh 'docker push maverick0803/hellowhale:latest'
-		    sh 'kubectl set image deployment/hellowhale hellowhale=maverick0803/hellowhale:latest'
+		    sh 'docker push gagan1109/hellowhale:latest'
+		    sh 'kubectl create deployment hellowhale --image=gagan1109/hellowhale:latest'
+		    sh 'kubectl set image deployment/hellowhale hellowhale=gagan1109/hellowhale:latest'
 	    }
       }
   }
