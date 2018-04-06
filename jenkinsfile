@@ -3,9 +3,6 @@
 pipeline {
   agent none
   stages {
-    stage ('Clone') {
-       checkout scm
-     }
     stage('Docker Build') {
       agent any
       steps {
