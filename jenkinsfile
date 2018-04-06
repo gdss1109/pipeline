@@ -13,7 +13,7 @@ pipeline {
       agent any
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'Sw@mi267', usernameVariable: 'maverick0803')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh "docker login -u ${env.maverick0803} -p ${env.Sw@mi267}"
           sh 'docker maverick0803/hellowhale:latest'
         }
       }
