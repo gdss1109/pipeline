@@ -22,7 +22,7 @@ pipeline {
 	    agent any
 	    steps{
 		    sh 'docker push maverick0803/hellowhale:latest'
-		    sh 'kubectl set image deployment/hellowhale maverick0803/hellowhale:latest'
+		    sh 'kubectl set image deployment/hellowhale hellowhale=maverick0803/hellowhale:latest'
 	    }
       }
   }
