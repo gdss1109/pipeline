@@ -22,7 +22,6 @@ pipeline {
 	    agent any
 	    steps{
 		    sh 'sudo docker push gagan1109/hellowhale:latest'
-		    sh 'kubectl create deployment hellowhale --image=gagan1109/hellowhale:latest'
 		    sh 'kubectl set image deployment/hellowhale hellowhale=gagan1109/hellowhale:latest'
 	    }
       }
