@@ -14,7 +14,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'docker maverick0803/hellowhale:latest'
+          sh 'docker push maverick0803/hellowhale:latest'
 	}
       }
     }
