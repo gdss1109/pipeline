@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy New Build To Kubernetes') {
 	    agent any
 	    steps{
-		    sh 'docker maverick0803/hellowhale:latest'
+		    sh 'docker push maverick0803/hellowhale:latest'
 		    sh 'kubectl set image deployment/hellowhale maverick0803/hellowhale:latest'
 	    }
       }
